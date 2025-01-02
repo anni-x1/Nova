@@ -1,6 +1,9 @@
+import os
+from dotenv import load_dotenv
 from newsapi import NewsApiClient
 
-newsapi = NewsApiClient(api_key='26cf3063ed3f4c30a6cfe3684300c30f')
+load_dotenv()
+newsapi = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
 
 def get_top_news(topic):
     try:

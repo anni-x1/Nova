@@ -1,9 +1,12 @@
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
 import pyautogui
 import time
 # import random
 
-client = OpenAI(api_key="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")
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # Writer function for generating and typing content

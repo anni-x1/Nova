@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 import json
 from openai import OpenAI
 import vars
@@ -5,11 +7,12 @@ import getNews
 import openCalc
 import writer
 
+load_dotenv()
 # File path to save conversation history
 HISTORY_FILE = "conversation_history.json"
 
 # OpenAI client
-client = OpenAI(api_key="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")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # Load conversation history from file
