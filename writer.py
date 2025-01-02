@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import pyautogui
 import time
-# import random
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -33,6 +32,6 @@ def writer(user_input):
     # Introduce faster dynamic speed variation
     for char in content:
         pyautogui.write(char)
-        time.sleep(0.000000000000001)  # Slightly faster variation
+        time.sleep(0.000001)  # Slightly faster variation
 
     return "Successfully typed the content."
