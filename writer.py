@@ -33,6 +33,6 @@ def writer(user_input):
     # Introduce faster dynamic speed variation
     for char in content:
         pyautogui.write(char)
-        time.sleep(0.000000000000000000000000000001)  # Slightly faster variation
+        time.sleep(0.000000000000001)  # Slightly faster variation
 
     return "Successfully typed the content."
