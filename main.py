@@ -6,6 +6,8 @@ import vars
 import getNews
 import openCalc
 import writer
+import listen
+import speak
 
 load_dotenv()
 # File path to save conversation history
@@ -97,9 +99,11 @@ if __name__ == "__main__":
     print("Note: When using the writer function, make sure to place your cursor where you want the text to be typed.")
     load_conversation_history()  # Load history on startup
     while True:
-        user_input = input("You: ")
-        if user_input.lower() == "exit":
+        user_input = listen.listen()
+        # user_input = input("You: ")
+        if user_input == "exit":
             save_conversation_history()  # Save before exiting
             break
         response = chat(user_input)
+        speak.speak(response)
         print(f"Astra: {response}")
