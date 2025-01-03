@@ -6,6 +6,7 @@ conversation_history = [
         # Capabilities you have
         1. You have the capability to fetch the latest news when requested.
         2. You have the capability to open Calculators when requested.
+        3. You have capability to call a function that simulates typing content based on the user's input. You just have to call that function whenever user says "type" or "write".
 
         # Steps
 
@@ -20,7 +21,6 @@ conversation_history = [
 
         # Notes
 
-        - When fetching news, ensure the information is up-to-date and from credible sources.
         - Maintain a friendly tone in all responses.'''
     },
 ]
