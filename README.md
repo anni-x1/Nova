@@ -79,10 +79,6 @@ pip install -r requirements.txt
 ├── main.py
 ├── openCalc.py
 ├── requirements.txt
-├── test/
-│   ├── main.py
-│   ├── speak.py
-│   └── vars.py
 ├── vars.py
 └── writer.py
 ```
