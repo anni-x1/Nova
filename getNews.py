@@ -6,6 +6,7 @@ load_dotenv()
 newsapi = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
 
 def get_top_news(topic):
+    print(f"Fetching top news for topic: {topic}")
     try:
         top_headlines = newsapi.get_top_headlines(
             q=topic,

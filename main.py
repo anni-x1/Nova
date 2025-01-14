@@ -7,7 +7,8 @@ import getNews
 import openCalc
 import writer
 import listen
-import speak
+import pyaudio
+import base64
 
 load_dotenv()
 # File path to save conversation history
@@ -30,6 +31,7 @@ def load_conversation_history():
         vars.conversation_history = []
         print("Corrupted history file. Starting fresh.")
 
+
 # Save conversation history to file
 def save_conversation_history():
     try:
@@ -38,21 +40,38 @@ def save_conversation_history():
     except Exception as e:
         print(f"Failed to save conversation history: {e}")
 
+
 # Chat function
 def chat(user_input):
+    print("Processing...")
     # Append the user's input to the conversation history
     vars.conversation_history.append({"role": "user", "content": user_input})
 
     # Generate response from OpenAI
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o-mini-audio-preview",
+        modalities=["text", "audio"],
+        audio={"voice": "sage", "format": "wav"},
         messages=vars.conversation_history,
         functions=vars.functions,
         function_call="auto",
     )
 
-    message = response.choices[0].message
 
+    message = response.choices[0].message
+    if message.audio:
+        wav_bytes = base64.b64decode(response.choices[0].message.audio.data)
+        p = pyaudio.PyAudio()
+        audio_stream = p.open(format=p.get_format_from_width(width=2),
+                            channels=1,
+                            rate=24000,  # Example rate; replace with the actual rate from the response metadata
+                            output=True)
+
+        # Stream the audio directly from memory
+        audio_stream.write(wav_bytes)
+        audio_stream.stop_stream()
+        audio_stream.close()
+        p.terminate()
     if hasattr(message, "function_call") and message.function_call:
         function_name = message.function_call.name
         function_args = json.loads(message.function_call.arguments)
@@ -78,25 +97,44 @@ def chat(user_input):
 
         # Generate a refined response
         refined_response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o-mini-audio-preview",
+            modalities=["text", "audio"],
+            audio={"voice": "sage", "format": "wav"},
             messages=vars.conversation_history,
         )
 
         # Append Astra's response to history
         final_response = refined_response.choices[0].message.content
-        vars.conversation_history.append({"role": "assistant", "content": final_response})
+        vars.conversation_history.append(
+            {"role": "assistant", "content": final_response}
+        )
+        wav_bytes = base64.b64decode(refined_response.choices[0].message.audio.data)
+        p = pyaudio.PyAudio()
+        audio_stream = p.open(format=p.get_format_from_width(width=2),
+                            channels=1,
+                            rate=24000,  # Example rate; replace with the actual rate from the response metadata
+                            output=True)
 
+        # Stream the audio directly from memory
+        audio_stream.write(wav_bytes)
+        audio_stream.stop_stream()
+        audio_stream.close()
+        p.terminate()
         save_conversation_history()  # Save updated history
         return final_response
 
-    # Append Astra's direct response to history
-    vars.conversation_history.append({"role": "assistant", "content": message.content})
     save_conversation_history()  # Save updated history
-    return message.content
+    # Append Astra's direct response to history
+    vars.conversation_history.append(
+        {"role": "assistant", "content": message.audio.transcript}
+    )
+    return message.audio.transcript
 
 if __name__ == "__main__":
     print("Welcome to the Chat Assistant with Auto-typing capability!")
-    print("Note: When using the writer function, make sure to place your cursor where you want the text to be typed.")
+    print(
+        "Note: When using the writer function, make sure to place your cursor where you want the text to be typed."
+    )
     load_conversation_history()  # Load history on startup
     while True:
         user_input = listen.listen()
@@ -105,5 +143,4 @@ if __name__ == "__main__":
             save_conversation_history()  # Save before exiting
             break
         response = chat(user_input)
-        speak.speak(response)
-        print(f"Astra: {response}")
+        print(f"Nova: {response}")

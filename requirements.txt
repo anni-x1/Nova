@@ -1,0 +1,7 @@
+pyaudio
+pygame
+speechrecognition
+python-dotenv
+newsapi-python
+openai
+pyautogui
