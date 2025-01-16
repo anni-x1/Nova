@@ -34,5 +34,6 @@ def writer(user_input):
         # pyautogui.write(char)
         # time.sleep(0.000001)  # Slightly faster variation
     pyautogui.write(content, interval=0.000001)  # No delay between keystrokes
-    print(content)
-    return "I have successfully typed the content here."
+    # print(content)
+    ret = "I have successfully typed " + user_input
+    return ret
