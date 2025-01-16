@@ -73,14 +73,19 @@ pip install -r requirements.txt
 ├── .gitignore
 ├── .vscode/
 │   └── tasks.json
-├── conversation_history.json
-├── getNews.py
+├── chat.py
+├── history_management.py
+├── history.json
 ├── listen.py
 ├── main.py
-├── openCalc.py
+├── README.md
 ├── requirements.txt
-├── vars.py
-└── writer.py
+├── tools/
+│   ├── __pycache__/
+│   ├── getNews.py
+│   ├── openCalc.py
+│   └── writer.py
+└── vars.py
 ```
 
 ## Contributing
