@@ -52,4 +52,17 @@ tools = [
             }
         }
     },
+    {
+        "type": "function",
+        "name": "close_current_window",
+        "description": "Closes the currently active window using an Alt+F4 keyboard shortcut.",
+        "function": {
+            "name": "close_current_window",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": False
+            }
+        }
+    }
 ]

@@ -16,7 +16,7 @@ def listen():
             recognizer.adjust_for_ambient_noise(source, duration=1)
 
             # Set energy threshold for better recognition
-            recognizer.energy_threshold = 1000  # Adjust based on your environment
+            recognizer.energy_threshold = 400  # Adjust based on your environment
             recognizer.dynamic_energy_threshold = True
 
             while True:

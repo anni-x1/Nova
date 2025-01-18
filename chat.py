@@ -9,6 +9,7 @@ from history_management import save_history
 from tools import getNews
 from tools import openCalc
 from tools import writer
+from tools import closeWin
 
 load_dotenv()
 
@@ -69,6 +70,8 @@ def chat(user_input):
             tool_response = getNews.get_top_news(topic)
         elif tool_name == "open_calculator":
             tool_response = openCalc.open_calculator()
+        elif tool_name == "close_current_window":
+            tool_response = closeWin.close_current_window()
         elif tool_name == "writer":
             # Handle writer function call and type out the content
             writer_input = tool_args.get("user_input")
