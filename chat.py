@@ -3,13 +3,12 @@ import json
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-import pyaudio
+from play_audio import play_audio
 import vars
 from history_management import save_history
 from tools import getNews
 from tools import openCalc
 from tools import writer
-
 
 load_dotenv()
 
@@ -35,25 +34,14 @@ def chat(user_input):
             tool_choice="auto",
         )
         message = response.choices[0].message
+
     except Exception as e:
         print(f"Error during OpenAI API call: {e}")
         return "I encountered an error while processing your request."
 
     if message.audio:
         wav_bytes = base64.b64decode(response.choices[0].message.audio.data)
-
-        p = pyaudio.PyAudio()
-        audio_stream = p.open(
-            format=p.get_format_from_width(width=2),
-            channels=1,
-            rate=24000,  # Example rate; replace with the actual rate from the response metadata
-            output=True,
-        )
-        # Stream the audio directly from memory
-        audio_stream.write(wav_bytes)
-        audio_stream.stop_stream()
-        audio_stream.close()
-        p.terminate()
+        play_audio(wav_bytes)
 
     if hasattr(message, "tool_calls") and message.tool_calls:
         tool_name = message.tool_calls[0].function.name
@@ -127,20 +115,7 @@ def chat(user_input):
         save_history()  # Save updated history
 
         wav_bytes = base64.b64decode(refined_response.choices[0].message.audio.data)
-
-        p = pyaudio.PyAudio()
-        audio_stream = p.open(
-            format=p.get_format_from_width(width=2),
-            channels=1,
-            rate=24000,  # Example rate; replace with the actual rate from the response metadata
-            output=True,
-        )
-
-        # Stream the audio directly from memory
-        audio_stream.write(wav_bytes)
-        audio_stream.stop_stream()
-        audio_stream.close()
-        p.terminate()
+        play_audio(wav_bytes)
         return final_response
 
     # Append Astra's direct response to history
