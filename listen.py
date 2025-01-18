@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import pygame
 import time
-
+from play_audio import eff
 
 def listen():
     """
@@ -16,25 +16,23 @@ def listen():
             recognizer.adjust_for_ambient_noise(source, duration=1)
 
             # Set energy threshold for better recognition
-            recognizer.energy_threshold = 500  # Adjust based on your environment
+            recognizer.energy_threshold = 1000  # Adjust based on your environment
             recognizer.dynamic_energy_threshold = True
 
             while True:
-                pygame.mixer.init()
-                pygame.mixer.music.load("wake_detected.mp3")
-                pygame.mixer.music.set_volume(0.3)
-                pygame.mixer.music.play()
-                time.sleep(0.5)
-
                 print("Listening...")
+                eff("./sound_effects/listening.wav")
                 try:
                     audio = recognizer.listen(source, timeout=5, phrase_time_limit=10)
                     print("Recognizing...")
                     text = recognizer.recognize_google(audio)
+                    eff("./sound_effects/recognised.wav")
                     return text  # Return the recognized text
 
                 except sr.UnknownValueError:
+                    eff("./sound_effects/error.wav")
                     print("Sorry, I didn't catch that. Please speak again.")
+                    eff("./sound_effects/error_msg.mp3")
                     continue
 
                 except sr.WaitTimeoutError:

@@ -12,6 +12,14 @@
 			"presentation": {
 				"reveal": "silent"
 			}
+		},
+		{
+			"type": "shell",
+			"label": "activate-venv",
+			"command": "X:\\XX\\Scripts\\Activate.ps1",
+			"presentation": {
+				"reveal": "silent"
+			}
 		}
 	]
 }

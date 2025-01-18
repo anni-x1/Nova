@@ -5,3 +5,5 @@ python-dotenv
 newsapi-python
 openai
 pyautogui
+pvporcupine
+sounddevice
