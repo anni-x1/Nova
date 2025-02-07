@@ -1,10 +1,10 @@
-# Nova: Your Personal Voice-Activated Assistant 🌟✨🎙️
+# Astra: Your Personal Voice-Activated Assistant 🌟✨🎙️
 
-Nova is an intelligent, voice-activated assistant designed to streamline your daily tasks. With capabilities like fetching the latest news, opening the calculator, and simulating typing, Nova offers a seamless, interactive experience by leveraging a range of APIs and libraries. 🚀💡🎧
+Astra is an intelligent, voice-activated assistant designed to streamline your daily tasks. With capabilities like fetching the latest news, opening the calculator, and simulating typing, Astra offers a seamless, interactive experience by leveraging a range of APIs and libraries. 🚀💡🎧
 
 ## Key Features 🎯💻🔊
 
-- **Voice Recognition with Wake Word**: Activate Nova by simply saying "Hey Nova" using Picovoice's Porcupine engine and a custom `.ppn` model for wake word detection. 🗣️🖥️
+- **Voice Recognition with Wake Word**: Activate Astra by simply saying "Hey Astra" using Picovoice's Porcupine engine and a custom `.ppn` model for wake word detection. 🗣️🖥️
 - **News Fetching**: Get the latest updates from around the world with the newsapi-python library. 🌍📰✨
 - **Open Calculator**: Launches the calculator application effortlessly. ➕🖩⚡
 - **Auto Typing**: Simulates automatic typing based on user input using pyautogui. ⌨️🤖💬
@@ -13,7 +13,7 @@ Nova is an intelligent, voice-activated assistant designed to streamline your da
 
 ## Requirements 📦🛠️⚙️
 
-Nova requires the following Python packages:
+Astra requires the following Python packages:
 
 - pyaudio
 - pygame
@@ -36,8 +36,8 @@ pip install -r requirements.txt
 1. **Clone the repository**: 🖥️📂
 
    ```sh
-   git clone https://github.com/yourusername/nova.git
-   cd nova
+   git clone https://github.com/yourusername/Astra.git
+   cd Astra
    ```
 
 2. **Create a .env file**: 📝🔐
@@ -56,14 +56,14 @@ pip install -r requirements.txt
 
 4. **Add your custom `.ppn` model**: 🎤🖥️
 
-   - Place your `.ppn` file (e.g., `hey_nova.ppn`) in the `voice_activation/` directory.
+   - Place your `.ppn` file (e.g., `hey_Astra.ppn`) in the `voice_activation/` directory.
    - Ensure the path is correctly referenced in `wake.py`. 🌟🗂️
 
 5. **Get Your Own `.ppn` Model**: 🌐🔊
 
    - Visit [Picovoice Console](https://console.picovoice.ai/). 🌍✨
    - Sign up or log in to your account. 🔐💻
-   - Create a new wake word model by specifying the desired wake word (e.g., "Hey Nova"). 🎙️🖊️
+   - Create a new wake word model by specifying the desired wake word (e.g., "Hey Astra"). 🎙️🖊️
    - Download the `.ppn` model file and place it in the `voice_activation/` directory. 📥🗂️
 
 6. **Run the application**: 🚀💡
@@ -74,7 +74,7 @@ pip install -r requirements.txt
 
 ## Usage 🎤🖥️✨
 
-- **Voice Commands**: Activate Nova by saying "Hey Nova" and give commands to fetch news, open the calculator, or type text. 🎙️💻
+- **Voice Commands**: Activate Astra by saying "Hey Astra" and give commands to fetch news, open the calculator, or type text. 🎙️💻
 - **Manual Input**: If preferred, you can manually input commands. ✍️🔧
 
 ## Project Structure 📂🛠️✨
@@ -99,7 +99,7 @@ pip install -r requirements.txt
 │   └── writer.py
 ├── voice_activation/
 │   ├── __pycache__/
-│   ├── hey_nova.ppn
+│   ├── hey_Astra.ppn
 │   ├── wake.py
 ├── chat.py
 ├── history_management.py
@@ -114,7 +114,7 @@ pip install -r requirements.txt
 
 ## Contributing 🤝🌟✨
 
-We welcome contributions! Feel free to open an issue or submit a pull request if you'd like to help improve Nova. 💻🌍🎉
+We welcome contributions! Feel free to open an issue or submit a pull request if you'd like to help improve Astra. 💻🌍🎉
 
 ## License 📝⚖️📂
 
