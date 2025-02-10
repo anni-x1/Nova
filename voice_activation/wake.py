@@ -1,7 +1,7 @@
 import pvporcupine
 import sounddevice as sd
 import numpy as np
-from main import nova
+from main import astra
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,7 +17,7 @@ def wake():
     # Load Porcupine with the access key and custom wake word model
     porcupine = pvporcupine.create(
         access_key=access_key,
-        keyword_paths=["A:\\Project Nova\\voice_activation\\hey_nova.ppn"]  # Path to your custom-trained wake word model
+        keyword_paths=["A:\\Project Astra\\voice_activation\\Hey-Astra.ppn"]  # Path to your custom-trained wake word model
     )
 
     def audio_callback(indata, frames, time, status):
@@ -30,10 +30,10 @@ def wake():
         # Check if wake word is detected
         keyword_index = porcupine.process(pcm)
         if keyword_index >= 0:
-            print("Nova is now active!")
-            nova()  # Activate Nova
+            print("Astra is now active!")
+            astra()  # Activate Astra
 
-    print("Listening for wake word: 'Hey Nova'...")
+    print("Listening for wake word: 'Hey Astra'...")
 
     try:
         with sd.InputStream(
