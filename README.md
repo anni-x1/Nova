@@ -52,6 +52,7 @@ pip install -r requirements.txt
    NEWS_API_KEY=your_news_api_key
    OPENAI_API_KEY=your_openai_api_key
    PPM_ACCESS_KEY=your_ppm_access_key
+   GROQ_API_KEY=your_groq_api_key
    ```
 
 4. **Add your custom `.ppn` model**: 🎤🖥️
