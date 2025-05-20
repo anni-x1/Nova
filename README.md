@@ -1,6 +1,6 @@
-# Astra: Your Personal Voice-Activated Assistant 🌟✨🎙️
+# Nova: Your Personal Voice-Activated Assistant 🌟✨🎙️
 
-Astra is an intelligent, voice-activated assistant designed to streamline your daily tasks. With capabilities like fetching the latest news, opening the calculator, and simulating typing, Astra offers a seamless, interactive experience by leveraging a range of APIs and libraries. 🚀💡🎧
+Nova is an intelligent, voice-activated assistant designed to streamline your daily tasks. With capabilities like fetching the latest news, opening the calculator, and simulating typing, Astra offers a seamless, interactive experience by leveraging a range of APIs and libraries. 🚀💡🎧
 
 ## Key Features 🎯💻🔊
 
